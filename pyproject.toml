@@ -1,0 +1,37 @@
+[tool.poetry]
+name = "gnn-final-project"
+version = "0.1.0"
+description = ""
+authors = ["Alexander Gréus <alexgreus51@gmail.com>"]
+readme = "README.md"
+
+[tool.poetry.dependencies]
+python = "^3.11"
+torch = "^2.6.0"
+torchvision = "^0.21.0"
+pandas = "^2.2.3"
+matplotlib = "^3.10.1"
+scikit-learn = "^1.6.1"
+
+[tool.poetry.group.dev.dependencies]
+torch = [
+    # Install the CUDA version on Windows. Projects that depend on us always get their dependencies from PyPI, so
+    # there's no point moving this to the main dependencies section.
+    { version = "^2.6.0", markers="sys_platform == 'win32'", source = "torch_cuda" },
+    { version = "^2.6.0", markers="sys_platform != 'win32'", source = "pypi" },
+]
+torchvision = [
+    # Install the CUDA version on Windows. Projects that depend on us always get their dependencies from PyPI, so
+    # there's no point moving this to the main dependencies section.
+    { version = "^0.21.0", markers="sys_platform == 'win32'", source = "torch_cuda" },
+    { version = "^0.21.0", markers="sys_platform != 'win32'", source = "pypi" },
+]
+
+[[tool.poetry.source]]
+name = "torch_cuda"
+url = "https://download.pytorch.org/whl/cu126"
+priority = "explicit"
+
+[build-system]
+requires = ["poetry-core"]
+build-backend = "poetry.core.masonry.api"
