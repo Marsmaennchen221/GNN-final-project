@@ -47,3 +47,4 @@ megalinter-reports/
 # Other
 .DS_Store
 *.log
+/surfrad/
